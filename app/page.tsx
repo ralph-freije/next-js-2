@@ -18,7 +18,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   return (
-    <main className={`${poppins.className} bg-[#f3f3f3]`}>
+    <main className={`${poppins.className} bg-[#f3f3f3] overflow-x-hidden`}>
     <section className="w-full">
   <div className="max-w-[1440px] mx-auto md:grid md:grid-cols-[54.5%_45.5%]">
         <div className="flex flex-col bg-[#f3f3f3] w-full">
@@ -95,7 +95,7 @@ export default function Home() {
         </div>
 
 <div className="relative hidden md:block">
-  <div className="absolute top-0 left-0 w-[100vw] h-full bg-[#17c58b] rounded-bl-[72px]"></div>
+  <div className="absolute top-0 left-0 w-screen max-w-none h-full bg-[#17c58b] rounded-bl-[72px]"></div>
           <div className="absolute right-10 top-7 z-20 flex items-center gap-6">
             <button className="cursor-pointer text-[14px] font-medium text-white">
               Sign In
