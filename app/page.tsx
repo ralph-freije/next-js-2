@@ -18,10 +18,11 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   return (
-    <main className={`${poppins.className} min-h-screen bg-[#f3f3f3]`}>
-      <section className="mx-auto min-h-screen max-w-[1440px] md:grid md:grid-cols-[54.5%_45.5%]">
-        <div className="flex min-h-screen flex-col bg-[#f3f3f3]">
-          <div className="mx-auto flex w-full max-w-[780px] flex-1 flex-col px-6 pb-10 pt-7 md:px-10 md:pb-12 md:pt-9 lg:px-12">
+    <main className={`${poppins.className} bg-[#f3f3f3]`}>
+    <section className="w-full">
+  <div className="max-w-[1440px] mx-auto md:grid md:grid-cols-[54.5%_45.5%]">
+        <div className="flex flex-col bg-[#f3f3f3] w-full">
+          <div className="mx-auto flex w-full max-w-[780px] flex-1 flex-col px-6 pb-12 pt-7 md:px-10 md:pb-16 md:pt-9 lg:px-12">
             <div className="flex items-center justify-between">
               <Link href="/" className="shrink-0">
                 <Logo />
@@ -50,17 +51,17 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="flex flex-1 flex-col justify-center pt-12 text-center md:pt-0 md:text-left">
-              <div className="mx-auto w-full max-w-[610px] md:mx-0">
-                <h1 className="max-w-[520px] text-[34px] md:text-[42px] font-bold leading-[1.2] text-black">
+            <div className="flex flex-col justify-center pt-12 md:pt-20 text-center md:text-left">
+              <div className="mx-auto w-full max-w-[520px] md:mx-0">
+                <h1 className="text-[36px] md:text-[46px] font-bold leading-[1.2] text-black">
                   Search, Find, & Apply
                 </h1>
 
-                <p className="mt-7 max-w-[575px] text-[15px] font-normal leading-[1.9] text-black md:text-[16px]">
+                <p className="mt-5 text-[14px] md:text-[15px] leading-[1.8] text-[#6b7280] max-w-[460px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus non orci euismod vestibulum vitae ut ex. Quisque ut arcu at lectus tristique auctor sit amet at turpis.
                 </p>
 
-                <div className="mt-8 rounded-[18px] bg-[#eeeeee] p-[6px]">
+                <div className="mt-8 rounded-[18px] bg-[#eeeeee] p-[6px] max-w-[520px]">
                   <div className="flex items-center bg-white rounded-[16px] px-2 py-2 gap-2">
                     <div className="flex items-center gap-2 bg-[#f3f3f3] px-4 h-[44px] rounded-[12px] flex-1">
                       <span className="text-[14px] text-[#8b93a7]">🔍</span>
@@ -71,7 +72,7 @@ export default function Home() {
                       />
                     </div>
 
-                    <div className="hidden h-[26px] w-px bg-[#e5e7eb] sm:block" />
+                    <div className="hidden h-[24px] w-px bg-[#e5e7eb] sm:block" />
 
                     <div className="flex items-center gap-2 bg-[#f3f3f3] px-4 h-[44px] rounded-[12px] flex-1">
                       <span className="text-[14px] text-[#8b93a7]">📍</span>
@@ -83,7 +84,7 @@ export default function Home() {
                       <span className="text-[11px] text-[#9ca3af]">▾</span>
                     </div>
 
-                   <button className="h-[44px] rounded-[12px] bg-[#17c58b] px-6 text-[13px] font-medium text-white">
+                    <button className="h-[44px] rounded-[12px] bg-[#17c58b] px-6 text-[13px] font-medium text-white">
                       Search
                     </button>
                   </div>
@@ -93,28 +94,31 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative hidden min-h-screen overflow-hidden rounded-bl-[72px] bg-[#17c58b] md:block">
+<div className="relative hidden md:block">
+  <div className="absolute top-0 left-0 w-[100vw] h-full bg-[#17c58b] rounded-bl-[72px]"></div>
           <div className="absolute right-10 top-7 z-20 flex items-center gap-6">
-            <button className="cursor-pointer text-[14px] font-medium text-white transition hover:opacity-90">
+            <button className="cursor-pointer text-[14px] font-medium text-white">
               Sign In
             </button>
 
-            <button className="flex cursor-pointer items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)] transition hover:translate-y-[-1px]">
+            <button className="flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)]">
               <CreateAccountIcons />
               <span>Create Account</span>
             </button>
           </div>
 
-          <div className="absolute left-[21%] top-[18%] rotate-[10deg] rounded-[20px] bg-white p-4 shadow-[0_10px_22px_rgba(0,0,0,0.10)]">
-            <Icon1 />
-          </div>
+        <div className="relative min-h-[560px]">
+            <div className="absolute left-[21%] top-[18%] rotate-[10deg] rounded-[20px] bg-white p-4 shadow-[0_10px_22px_rgba(0,0,0,0.10)]">
+              <Icon1 />
+            </div>
 
-          <div className="absolute right-[13%] top-[38%] -rotate-[10deg] rounded-[20px] bg-white p-4 shadow-[0_10px_22px_rgba(0,0,0,0.10)]">
-            <ChartIcon />
-          </div>
+            <div className="absolute right-[13%] top-[38%] -rotate-[10deg] rounded-[20px] bg-white p-4 shadow-[0_10px_22px_rgba(0,0,0,0.10)]">
+              <ChartIcon />
+            </div>
 
-          <div className="absolute bottom-[24%] left-[28%] rotate-[6deg] rounded-[20px] bg-white p-4 shadow-[0_10px_22px_rgba(0,0,0,0.10)]">
-            <ShieldIcon />
+            <div className="absolute bottom-[24%] left-[28%] rotate-[6deg] rounded-[20px] bg-white p-4 shadow-[0_10px_22px_rgba(0,0,0,0.10)]">
+              <ShieldIcon />
+            </div>
           </div>
         </div>
 
@@ -158,6 +162,7 @@ export default function Home() {
             </div>
           </div>
         )}
+        </div>
       </section>
     </main>
   );
