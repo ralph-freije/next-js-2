@@ -72,7 +72,7 @@ export default function HowItWorks() {
 </div>
 
         <div className="mt-10 flex justify-center md:hidden">
-          <button className="border border-[#17c58b] text-[#17c58b] px-6 py-2 rounded-[10px] text-[14px] font-medium hover:bg-[#17c58b] hover:text-white transition">
+          <button className="cursor-pointer border border-[#17c58b] text-[#17c58b] px-6 py-2 rounded-[10px] text-[14px] font-medium hover:bg-[#17c58b] hover:text-white transition">
             Learn More
           </button>
         </div>
