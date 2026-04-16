@@ -8,6 +8,7 @@ import Logo from "./components/icons/Logo";
 import ChartIcon from "./components/icons/ChartIcon";
 import ShieldIcon from "./components/icons/ShieldIcon";
 import CreateAccountIcons from "./components/icons/CreateAccountIcons";
+import HowItWorks from "./components/sections/HowItworks";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -121,7 +122,7 @@ export default function Home() {
               </button>
 
               <button className="cursor-pointer hover:bg-[#f3f3f3]  flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)]">
-                <CreateAccountIcons />
+                <CreateAccountIcons className="w-6 h-6 text-[#17c58b]"/>
                 <span>Create Account</span>
               </button>
             </div>
@@ -159,7 +160,7 @@ export default function Home() {
                 </button>
 
                 <button className="flex items-center gap-2 bg-[#17c58b] text-white px-4 py-2 rounded-lg">
-                  <CreateAccountIcons />
+                  <CreateAccountIcons className="w-6 h-6"/>
                   <span>Create Account</span>
                 </button>
               </div>
@@ -167,6 +168,7 @@ export default function Home() {
           )}
         </div>
       </section>
+      <HowItWorks />
     </main>
   );
 }

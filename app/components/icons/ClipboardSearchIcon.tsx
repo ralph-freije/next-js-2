@@ -1,25 +1,32 @@
 import { SVGProps } from "react";
 
-export default function CreateAccountIcons(
-  props: SVGProps<SVGSVGElement>
-) {
+export default function ClipboardSearchIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} viewBox="0 0 24 24" fill="none">
+      <rect
+        x="4"
+        y="5"
+        width="12"
+        height="14"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
       <path
-        d="M14 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H14"
+        d="M9 3h2a2 2 0 0 1 2 2H7a2 2 0 0 1 2-2z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
       />
-      <path
-        d="M10 17L15 12L10 7"
+      <circle
+        cx="14.5"
+        cy="14.5"
+        r="2.5"
         stroke="currentColor"
         strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
       />
       <path
-        d="M15 12H4"
+        d="M17 17L20 20"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
