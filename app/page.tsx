@@ -47,67 +47,65 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className="flex flex-col justify-center pt-12 md:pt-20 text-center md:text-left">
-                <div className="mx-auto w-full max-w-[520px] md:mx-0">
+              <div className="flex flex-col mt-15 justify-center pt-12 md:pt-20 text-center md:text-left">
+                <div className="mx-auto w-full max-w-[720px] md:mx-0">
                   <h1 className="text-[36px] md:text-[46px] font-bold leading-[1.2] text-black">
                     Search, Find, & Apply
                   </h1>
 
-                  <p className="mt-5 text-[14px] md:text-[15px] leading-[1.8] text-[#6b7280] max-w-[460px]">
+                  <p className="mt-5 text-[14px] md:text-[15px] leading-[1.8] max-w-[460px] black-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus non orci euismod vestibulum vitae ut ex. Quisque ut arcu at lectus tristique auctor sit amet at turpis.
                   </p>
 
-                  <div className="mt-8 rounded-[18px] bg-[#eeeeee] p-[6px] max-w-[520px]">
-                    <div className="flex items-center bg-white rounded-[16px] px-2 py-2 gap-2">
+                  <div className="w-full mt-10 bg-white rounded-[16px] p-4 flex flex-col gap-3">
 
-                      <div className="flex items-center gap-2 bg-[#f3f3f3] px-4 h-[44px] rounded-[12px] flex-1">
-                        <span className="text-[14px] text-[#8b93a7]">🔍</span>
-                        <input
-                          type="text"
-                          placeholder="Job tittle or Keyword"
-                          className="w-full bg-transparent text-[14px] font-medium text-[#6b7280] outline-none placeholder:text-[#9ca3af]"
-                        />
-                      </div>
-
-                      <div className="hidden h-[24px] w-px bg-[#e5e7eb] sm:block" />
-
-                      <div
-                        className="relative flex items-center gap-2 bg-[#f3f3f3] px-4 h-[48px] rounded-[14px] flex-1 cursor-pointer"
-                        onClick={() => setOpenDropdown(!openDropdown)}
-                      >
-                        <span className="text-[16px] text-[#9ca3af]">📍</span>
-
-                        <span className={`text-[14px] font-medium ${location ? "text-[#374151]" : "text-[#9ca3af]"}`}>
-                          {location || "Select location"}
-                        </span>
-
-                        <span className="ml-auto text-[12px] text-[#9ca3af]">
-                          {openDropdown ? "▲" : "▼"}
-                        </span>
-
-                        {openDropdown && (
-                          <div className="absolute left-0 top-[110%] w-full bg-white rounded-[14px] shadow-[0_10px_30px_rgba(0,0,0,0.12)] p-2 z-50">
-                            {locations.map((loc) => (
-                              <div
-                                key={loc}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setLocation(loc);
-                                  setOpenDropdown(false);
-                                }}
-                                className="px-4 py-2 rounded-[10px] text-[14px] text-[#374151] hover:bg-[#f3f3f3] transition cursor-pointer"
-                              >
-                                {loc}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-
-                      <button className="h-[44px] rounded-[12px] bg-[#17c58b] px-6 text-[13px] font-medium text-white">
-                        Search
-                      </button>
+                    <div className="flex items-center gap-2 bg-[#f3f3f3] px-4 h-[48px] rounded-[12px]">
+                      <span className="text-[14px] text-[#8b93a7]">🔍</span>
+                      <input
+                        type="text"
+                        placeholder="Job title or Keyword"
+                        className="w-full bg-transparent text-[14px] font-medium text-black outline-none placeholder:text-black"
+                      />
                     </div>
+
+
+
+                    <div
+                      className="relative flex items-center gap-2 bg-[#f3f3f3] px-4 h-[48px] rounded-[12px] cursor-pointer"
+                      onClick={() => setOpenDropdown(!openDropdown)}
+                    >
+                      <span className="text-[14px] text-[#8b93a7]">📍</span>
+
+                      <span className={`text-[14px] font-medium ${location ? "text-black" : "text-black"}`}>
+                        {location || "Location"}
+                      </span>
+
+                      <span className="ml-auto text-[12px] text-[#9ca3af]">
+                        {openDropdown ? "▲" : "▼"}
+                      </span>
+
+                      {openDropdown && (
+                        <div className="absolute left-0 top-[110%] w-full bg-white rounded-[12px] shadow-[0_10px_30px_rgba(0,0,0,0.12)] p-2 z-50">
+                          {locations.map((loc) => (
+                            <div
+                              key={loc}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setLocation(loc);
+                                setOpenDropdown(false);
+                              }}
+                              className="px-4 py-2 rounded-[10px] text-[14px] text-black hover:bg-[#f3f3f3] transition cursor-pointer"
+                            >
+                              {loc}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <button className="cursor-pointer w-full h-[48px] rounded-[12px] bg-[#17c58b] text-[14px] font-medium text-white">
+                      Search
+                    </button>
                   </div>
                 </div>
               </div>
@@ -122,23 +120,23 @@ export default function Home() {
                 Sign In
               </button>
 
-              <button className="flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)]">
+              <button className="cursor-pointer hover:bg-[#f3f3f3]  flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)]">
                 <CreateAccountIcons />
                 <span>Create Account</span>
               </button>
             </div>
 
             <div className="relative min-h-[560px]">
-              <div className="absolute left-[21%] top-[18%] rotate-[10deg] rounded-[24px] bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.12)]">
-                <Icon1 className="w-8 h-8" />
+              <div className="absolute left-[18%] top-[20%] rotate-[0deg] rounded-[14px] bg-white p-4 shadow-[0_14px_32px_rgba(0,0,0,0.12)]">
+                <Icon1 className="w-12 h-12" />
               </div>
 
-              <div className="absolute right-[13%] top-[38%] -rotate-[10deg] rounded-[24px] bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.12)]">
-                <ChartIcon className="w-8 h-8" />
+              <div className="absolute right-[12%] top-[42%] -rotate-[-8deg] rounded-[14px] bg-white p-4 shadow-[0_14px_32px_rgba(0,0,0,0.12)]">
+                <ChartIcon className="w-12 h-12" />
               </div>
 
-              <div className="absolute bottom-[24%] left-[28%] rotate-[6deg] rounded-[24px] bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.12)]">
-                <ShieldIcon className="w-8 h-8" />
+              <div className="absolute bottom-[18%] left-[24%] rotate-[-8deg] rounded-[14px] bg-white p-4 shadow-[0_14px_32px_rgba(0,0,0,0.12)]">
+                <ShieldIcon className="w-12 h-12" />
               </div>
             </div>
           </div>
