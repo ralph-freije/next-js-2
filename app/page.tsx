@@ -9,7 +9,8 @@ import ChartIcon from "./components/icons/ChartIcon";
 import ShieldIcon from "./components/icons/ShieldIcon";
 import CreateAccountIcons from "./components/icons/CreateAccountIcons";
 import HowItWorks from "./components/sections/HowItworks";
-
+import PromoSection from "./components/sections/PromoSection";
+import PopularCategories from "./components/sections/PopularCategories";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -168,7 +169,10 @@ export default function Home() {
           )}
         </div>
       </section>
-      <HowItWorks />
+
+<HowItWorks />
+<PromoSection />
+<PopularCategories />
     </main>
   );
 }
