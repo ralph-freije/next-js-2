@@ -39,7 +39,7 @@ export default function PopularCategories() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 md:py-20">
+    <section className="w-full bg-[#e6f4f1] py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
 
         <div className="text-center max-w-xl mx-auto">
