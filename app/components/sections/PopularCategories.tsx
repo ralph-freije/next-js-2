@@ -71,15 +71,15 @@ const categories = [
 ];
 
   return (
-    <section className="w-full bg-[#eaf5f2] py-16 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section className="w-full bg-white py-16 md:py-20">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-12">
 
         <div className="text-center max-w-[600px] mx-auto">
-          <h2 className="text-[22px] md:text-[26px] font-semibold text-black">
+   <h2 className="text-xl md:text-2xl font-semibold text-black">
             Popular Job Categories
           </h2>
 
-          <p className="mt-3 text-[14px] text-[#6b7280] leading-[1.7]">
+          <p className="mt-3 text-sm  text-[#6b7280] leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus non orci euismod vestibulum vitae ut ex.
           </p>
         </div>
@@ -113,7 +113,7 @@ const categories = [
                 </div>
 
                 <h3
-                  className={`mt-4 text-[14px] font-semibold ${
+                  className={`mt-4 text-sm font-semibold ${
                     activeIndex === i ? "text-white" : "text-black"
                   }`}
                 >
@@ -121,7 +121,7 @@ const categories = [
                 </h3>
 
                 <p
-                  className={`mt-2 text-[12px] ${
+                  className={`mt-2 text-xs ${
                     activeIndex === i ? "text-white/80" : "text-[#9ca3af]"
                   }`}
                 >
@@ -134,7 +134,7 @@ const categories = [
         </div>
 
         <div className="flex justify-center mt-10">
-          <button className="cursor-pointer border border-[#17c58b] text-[#17c58b] px-6 py-2 rounded-[10px] text-[14px] font-medium hover:bg-[#17c58b] hover:text-white transition">
+          <button className="cursor-pointer border border-[#17c58b] text-[#17c58b] px-6 py-2 rounded-[10px] text-sm font-medium hover:bg-[#17c58b] hover:text-white transition">
             View More
           </button>
         </div>
