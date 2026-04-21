@@ -12,6 +12,7 @@ import HowItWorks from "./components/sections/HowItworks";
 import PromoSection from "./components/sections/PromoSection";
 import PopularCategories from "./components/sections/PopularCategories";
 import RecentlyAddedJobs from "./components/sections/RecentlyAddedJobs";
+import FeedbackSection from "./components/sections/FeedbackSection";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -199,6 +200,7 @@ export default function Home() {
       <PromoSection />
       <PopularCategories />
 <RecentlyAddedJobs />
+<FeedbackSection />
     </main>
   );
 }

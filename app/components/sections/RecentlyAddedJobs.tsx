@@ -35,7 +35,7 @@ export default function RecentlyAddedJobs() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 md:py-20">
+    <section className="w-full bg-gray-100 py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
 
         <div className="text-center max-w-xl mx-auto">
