@@ -8,22 +8,22 @@ import UploadIcons from "../icons/UploadIcons";
 export default function HowItWorks() {
   const steps = [
     {
-      icon: <CreateAccountIcons className="w-6 h-6 text-[#17c58b]" />,
+      icon: <CreateAccountIcons className="w-[43px] h-[43px] text-[#17c58b]" />,
       title: "Register",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
     },
     {
-      icon: <FileText className="w-6 h-6 text-[#17c58b]" />,
+      icon: <FileText className="w-[43px] h-[43px] text-[#17c58b]" />,
       title: "Create a Resume",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
     },
     {
-      icon: <ClipboardSearchIcon className="w-6 h-6 text-[#17c58b]" />,
+      icon: <ClipboardSearchIcon className="w-[43px] h-[43px] text-[#17c58b]" />,
       title: "Find Job",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
     },
     {
-      icon: <UploadIcons className="w-6 h-6 text-[#17c58b]" />,
+      icon: <UploadIcons className="w-[43px] h-[43px] text-[#17c58b]" />,
       title: "Apply Job",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
     },
@@ -48,11 +48,11 @@ export default function HowItWorks() {
           </button>
         </div>
 
-        <div className="cursor-pointer hover:bg-[#f3f3f3] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-10">
+        <div className="cursor-pointer grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-10">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="bg-white hover:bg-[#f3f3f3] rounded-xl p-4 h-44 flex flex-col justify-start shadow-md hover:shadow-lg transition"
+              className="bg-white hover:bg-[#f3f3f3] rounded-xl p-4 h-44 flex flex-col justify-start shadow-md hover:shadow-lg  transition"
             >
               <div className="w-12 h-12 flex items-start justify-start">
                 <div className="scale-110">{step.icon}</div>

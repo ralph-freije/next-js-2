@@ -4,10 +4,10 @@ import Image from "next/image";
 
 export default function PromoSection() {
   return (
-    <section className="w-full bg-white py-16 md:py-20">
+    <section className="w-full bg-white py-6 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-2/5">
+          <div className="w-full md:w-4/5">
             <div className="relative w-full h-56 md:h-64 rounded-xl overflow-hidden">
               <Image
                 src="/images/promo.jpg"
@@ -19,8 +19,8 @@ export default function PromoSection() {
             </div>
           </div>
 
-          <div className="w-full md:w-3/5 text-center md:text-left">
-            <h2 className="text-lg md:text-xl font-semibold text-black leading-snug">
+          <div className="w-full md:w-5/5 text-center md:text-left">
+            <h2 className="text-lg md:text-4xl font-semibold text-black leading-snug">
               We will help you to become an employee in your dream company
             </h2>
 

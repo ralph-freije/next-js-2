@@ -59,9 +59,9 @@ export default function RecentlyAddedJobs() {
         >
           {jobs.map((job, i) => (
             <SwiperSlide key={i}>
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition cursor-pointer h-full">
+              <div className="bg-white rounded-xl p-6  hover:shadow-sm transition cursor-pointer h-full">
 
-                <div className="w-12 h-12 rounded-full overflow-hidden mb-4">
+                <div className="w-[93px] h-[93px] rounded-[47px] rounded-full overflow-hidden mb-4">
                   <Image
                     src={job.image}
                     alt={job.title}
@@ -71,11 +71,11 @@ export default function RecentlyAddedJobs() {
                   />
                 </div>
 
-                <h3 className="text-sm font-bold text-black">
+                <h3 className="text-lg font-bold text-black">
                   {job.title}
                 </h3>
 
-                <p className="text-xs font-medium text-[#6b7280] mt-1">
+                <p className="text-sm font-medium text-[#6b7280] mt-1">
                   {job.company}
                 </p>
 
@@ -84,12 +84,12 @@ export default function RecentlyAddedJobs() {
                 </p>
 
           <div className="flex items-center gap-3 mt-4 text-xs text-black font-bold">
-  <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full">
+  <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-[10px]">
     <MapPin className="w-3.5 h-3.5 text-black" />
     San Francisco, CA
   </span>
 
-  <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full">
+  <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-[10px]">
     <Clock className="w-3.5 h-3.5 text-black" />
     Full Time
   </span>

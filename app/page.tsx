@@ -29,8 +29,8 @@ export default function Home() {
   return (
     <main className={`${poppins.className} bg-[#f3f3f3] overflow-x-hidden`}>
       <section className="w-full">
-        <div className="max-w-[1440px] mx-auto md:grid md:grid-cols-[54.5%_45.5%]">
-          <div className="flex flex-col bg-[#f3f3f3] w-full">
+        <div className="max-w-7xl mx-auto md:grid md:grid-cols-[54.5%_45.5%]">
+          <div className="flex flex-col bg-white w-full">
             <div className="mx-auto flex w-full max-w-[780px] flex-1 flex-col px-6 pb-12 pt-7 md:px-10 md:pb-16 md:pt-9 lg:px-12">
               <div className="flex items-center justify-between">
                 <Link href="/" className="shrink-0">

@@ -39,7 +39,7 @@ export default function FeedbackSection() {
   const current = feedbacks[index];
 
   return (
-    <section className="w-full bg-gray-100 pt-16 pb-16 md:pt-20 md:pb-70">
+    <section className="w-full bg-gray-100 pt-16 pb-60 md:pt-10 md:pb-70">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
 
