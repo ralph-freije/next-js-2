@@ -5,10 +5,10 @@ import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 export default function FooterSection() {
     return (
-        <section className="w-full bg-[#17c58b] pt-20 pb-10 relative">
+      <section className="w-full bg-[#17c58b] pt-32 pb-20 relative">
 
             <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 relative">
-                <div className="bg-[#0b3f35] rounded-xl px-6 py-10 text-center -mt-32">
+                <div className="bg-[#0b3f35] rounded-xl px-10 md:px-16 py-12 text-center -mt-60">
 
                     <h2 className="text-lg md:text-xl font-semibold text-white">
                         Register your CV now!
@@ -24,9 +24,9 @@ export default function FooterSection() {
 
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 text-white">
+            <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 text-white mt-16">
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12 md:gap-x-20 md:gap-y-12">
 
                     <div className="col-span-2 md:col-span-1">
                         <h2 className="text-2xl font-bold text-black">
@@ -98,8 +98,6 @@ export default function FooterSection() {
                 </div>
 
             </div>
-
-
 
         </section>
     );

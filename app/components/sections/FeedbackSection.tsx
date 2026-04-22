@@ -16,13 +16,13 @@ export default function FeedbackSection() {
       text: "Second feedback example...",
       name: "Sarah Johnson",
       role: "UI Designer at Pixel Studio",
-      image: "/images/default.jpg",
+      image: "/images/default2.jpg",
     },
     {
       text: "Third feedback...",
       name: "Michael Lee",
       role: "Backend Engineer at DevCore",
-      image: "/images/default.jpg",
+      image: "/images/default2.jpg",
     },
   ];
 
@@ -39,13 +39,13 @@ export default function FeedbackSection() {
   const current = feedbacks[index];
 
   return (
-    <section className="w-full bg-gray-100 py-16 md:py-20">
+    <section className="w-full bg-gray-100 pt-16 pb-16 md:pt-20 md:pb-70">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-<div className="flex flex-col md:flex-row items-center md:items-start gap-10">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
 
-  <div className="w-full md:w-1/2 text-center md:text-left">
+          <div className="w-full md:w-1/2 text-center md:text-left">
             <h2 className="text-xl md:text-2xl font-semibold text-black">
-              People’s Feedback about JobNow!
+              People's Feedback about JobNow!
             </h2>
 
             <p className="mt-3 text-sm text-gray-500 leading-relaxed max-w-md mx-auto md:mx-0">
@@ -53,7 +53,7 @@ export default function FeedbackSection() {
             </p>
 
             <p className="mt-6 text-sm text-black leading-relaxed max-w-md mx-auto md:mx-0">
-              “{current.text}”
+              "{current.text}"
             </p>
 
             <div className="mt-8 flex justify-center md:hidden">
