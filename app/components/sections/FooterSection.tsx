@@ -14,7 +14,7 @@ export default function FooterSection() {
                         Register your CV now!
                     </h2>
 
-                    <p className="mt-4 text-sm text-gray-300 max-w-xl mx-auto">
+                    <p className="mt-4 text-sm text-gray-300 max-w-xl mx-auto ">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus non orci euismod vestibulum vitae ut ex.
                     </p>
 
@@ -26,14 +26,14 @@ export default function FooterSection() {
             </div>
             <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 text-white mt-16">
 
-              <div className="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr] gap-x-16 gap-y-20">
+              <div className="grid grid-cols-2 md:grid-cols-[2fr_1.5fr_0.5fr_0fr] gap-x-30 gap-y-20">
 
                     <div className="col-span-2 md:col-span-1">
                         <h2 className="text-4xl font-bold text-black  md:mt-5">
                             Job<span className="text-white">NQw</span>
                         </h2>
 
-                        <p className="mt-4 text-sm text-white/80">
+                        <p className="mt-4 text-sm max-w-xl text-white/80">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat facilisis nibh vel faucibus.
                         </p>
                     </div>

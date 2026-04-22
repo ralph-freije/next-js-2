@@ -61,12 +61,12 @@ export default function RecentlyAddedJobs() {
             <SwiperSlide key={i}>
               <div className="bg-white rounded-xl p-6  hover:shadow-sm transition cursor-pointer h-full">
 
-                <div className="w-[93px] h-[93px] rounded-[47px] rounded-full overflow-hidden mb-4">
+                <div className="w-24 h-24 rounded-full overflow-hidden mb-4">
                   <Image
                     src={job.image}
                     alt={job.title}
-                    width={48}
-                    height={48}
+                    width={1000}
+                    height={1000}
                     className="object-cover w-full h-full"
                   />
                 </div>
