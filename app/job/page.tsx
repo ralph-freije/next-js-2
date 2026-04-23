@@ -471,7 +471,7 @@ export default function JobPage() {
                     </div>
                 </section>
                 <section className="w-full bg-white pt-16 pb-50 md:pb-50">
-                    <div className="max-w-4xl mx-auto px-6">
+                    <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
 
                         <h2 className="text-2xl md:text-3xl font-semibold text-black text-center">
                             Frequently Asked Questions
@@ -483,14 +483,12 @@ export default function JobPage() {
                                 const isOpen = openFAQ === index;
 
                                 return (
-                                    <div
-                                        key={index}
-                                        className="border border-gray-200 rounded-xl overflow-hidden bg-[#f9f9f9]"
-                                    >
-                                        <button
-                                            onClick={() => setOpenFAQ(isOpen ? null : index)}
-                                            className="w-full flex items-center justify-between px-5 py-4 text-left"
-                                        >
+                                   <div
+  key={index}
+  onClick={() => setOpenFAQ(isOpen ? null : index)}
+  className="border border-gray-200 hover:bg-[#f3f3f3] rounded-xl overflow-hidden bg-[#f9f9f9] cursor-pointer transition"
+>
+                                       <div className="w-full flex items-center justify-between px-5 py-4 text-left">
                                             <span className="text-sm md:text-base font-medium text-black">
                                                 {faq.question}
                                             </span>
@@ -498,7 +496,7 @@ export default function JobPage() {
                                             <span className="text-xl">
                                                 {isOpen ? "−" : "+"}
                                             </span>
-                                        </button>
+                                        </div>
 
                                         {isOpen && (
                                             <div className="px-5 pb-4 text-sm text-gray-600">
