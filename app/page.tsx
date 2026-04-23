@@ -29,20 +29,20 @@ export default function Home() {
 
   return (
     <main className={`${poppins.className} bg-white overflow-x-hidden`}>
-      <section className="w-full">
+      <section className="w-full bg-[#f2f2f2]">
         <div className="max-w-7xl mx-auto md:grid md:grid-cols-[54.5%_45.5%]">
-          <div className="flex flex-col bg-white w-full">
+          <div className="flex flex-col bg-[#f2f2f2] w-full">
 
-            <div className="bg-[#f3f3f3] md:bg-white">
-              <div className="mx-auto flex w-full max-w-[780px] px-6 pt-7 pb-6 md:px-10 md:pt-9 md:pb-6 lg:px-12">
+            <div className="bg-[#f3f3f3] md:bg-[#f2f2f2]">
+              <div className="mx-auto flex w-full w-full px-6 pt-7 pb-6 md:px-10 md:pt-9 md:pb-6 lg:px-12">
                 <div className="flex items-center justify-between w-full">
                   <Link href="/" className="shrink-0">
                     <Logo />
                   </Link>
 
                   <nav className="hidden items-center gap-[46px] text-[14px] font-medium text-[#1f2937] md:flex">
-                    <a href="#" className="transition hover:text-black hover:underline">Home</a>
-                    <a href="#" className="transition hover:text-black hover:underline">Job</a>
+                    <a href="/" className="transition hover:text-black hover:underline">Home</a>
+                    <a href="/job" className="transition hover:text-black hover:underline">Job</a>
                     <a href="#" className="transition hover:text-black hover:underline">About Us</a>
                     <a href="#" className="transition hover:text-black hover:underline">Contact</a>
                   </nav>
@@ -57,7 +57,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white">
+            <div className="bg-[#f2f2f2]">
               <div className="mx-auto w-full max-w-[780px] px-6 pt-12 md:pt-20 text-center md:text-left md:px-10 lg:px-12">
                 <div className="mx-auto w-full max-w-[720px] md:mx-0">
                   <h1 className="text-[36px] md:text-[46px] font-bold leading-[1.2] text-black">

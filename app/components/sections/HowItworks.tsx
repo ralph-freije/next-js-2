@@ -30,7 +30,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 md:py-20">
+    <section className="w-full bg-[#fbfbfb] py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="max-w-2xl">

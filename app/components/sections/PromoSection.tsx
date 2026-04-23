@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function PromoSection() {
   return (
-    <section className="w-full bg-white py-6 md:py-20">
+    <section className="w-full bg-[#fbfbfb] py-6 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="w-full md:w-4/5">
