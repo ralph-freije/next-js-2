@@ -470,7 +470,7 @@ export default function JobPage() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full bg-white pt-16 pb-10 md:pb-50">
+                <section className="w-full bg-white pt-16 pb-50 md:pb-50">
                     <div className="max-w-4xl mx-auto px-6">
 
                         <h2 className="text-2xl md:text-3xl font-semibold text-black text-center">
