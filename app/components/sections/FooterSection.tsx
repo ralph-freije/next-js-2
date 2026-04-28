@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { Globe } from "lucide-react";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
@@ -14,13 +14,13 @@ export default function FooterSection() {
                         Register your CV now!
                     </h2>
 
-                    <p className="mt-4 text-sm text-gray-300 max-w-xl mx-auto ">
+                    <p className="mt-4 text-sm text-gray-300 max-w-xl mx-auto md:pb-10 pb-6">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus non orci euismod vestibulum vitae ut ex.
                     </p>
 
-                    <button className="mt-8 border border-white text-white px-6 py-2 rounded-md text-sm hover:bg-white hover:text-[#0b3f35] transition cursor-pointer">
+                    <Link href="/sign-up" className="mt-8 border border-white text-white px-6 py-2 rounded-md text-sm hover:bg-white hover:text-[#0b3f35] transition cursor-pointer">
                         Register Now
-                    </button>
+                    </Link>
 
                 </div>
             </div>

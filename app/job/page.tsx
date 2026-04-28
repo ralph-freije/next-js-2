@@ -270,7 +270,7 @@ export default function JobPage() {
                                         >
                                             {item.name}
                                             <span
-                                                className={`absolute left-1/2 -translate-x-1/2 -bottom-[9px] h-[2px] rounded-full bg-[#ff6b57] transition-all duration-300 ${
+                                                className={`absolute left-1/2 -translate-x-1/2 -bottom-[9px] h-[2px] rounded-full bg-[#17c58b] transition-all duration-300 ${
                                                     isActive ? "w-5" : "w-0"
                                                 }`}
                                             />
