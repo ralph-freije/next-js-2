@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Poppins } from "next/font/google";
 import { MapPin, Clock, ChevronDown, ChevronUp, Search } from "lucide-react";
 import Logo from "../components/icons/Logo";
@@ -186,6 +187,7 @@ const jobs: Job[] = [
         image: "/images/job2.jpg",
     },
 ];
+
 const faqs = [
     {
         question: "How do I apply for a job?",
@@ -208,6 +210,7 @@ const faqs = [
         answer: "In most cases yes, creating an account helps track your applications."
     }
 ];
+
 export default function JobPage() {
     const [search, setSearch] = useState("");
     const [location, setLocation] = useState("All");
@@ -215,9 +218,18 @@ export default function JobPage() {
     const [category, setCategory] = useState("All");
     const [openJobId, setOpenJobId] = useState<number | null>(null);
     const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+    const pathname = usePathname();
+
     const locations = ["All", "Beirut", "Dubai", "London", "Remote"];
     const types = ["All", "Full Time", "Part Time", "Remote", "Internship"];
     const categories = ["All", "Development", "Design", "Marketing", "Data", "Management"];
+
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "Job", href: "/job" },
+        { name: "About Us", href: "/about" },
+        { name: "Contact", href: "/contact" },
+    ];
 
     const filteredJobs = useMemo(() => {
         return jobs.filter((job) => {
@@ -235,8 +247,8 @@ export default function JobPage() {
     }, [search, location, type, category]);
 
     return (
-<main className="min-h-screen flex flex-col bg-[#17c58b]">
-  <div className="flex-1 flex flex-col">
+        <main className="min-h-screen flex flex-col bg-[#17c58b]">
+            <div className="flex-1 flex flex-col">
                 <section className="w-full bg-[#f3f3f3] ">
                     <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pt-12 md:pt-16 pb-20">
                         <div className="flex items-center justify-between">
@@ -245,21 +257,43 @@ export default function JobPage() {
                             </Link>
 
                             <nav className="hidden md:flex items-center gap-10 text-sm font-medium text-[#1f2937]">
-                                <Link href="/" className="transition hover:text-black hover:underline">Home</Link>
-                                <Link href="/job" className="transition hover:text-black hover:underline">Job</Link>
-                                <a href="#" className="transition hover:text-black hover:underline">About Us</a>
-                                <a href="#" className="transition hover:text-black hover:underline">Contact</a>
+                                {navLinks.map((item) => {
+                                    const isActive = pathname === item.href;
+
+                                    return (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            className={`relative transition ${
+                                                isActive ? "text-black" : "text-[#1f2937] hover:text-black"
+                                            }`}
+                                        >
+                                            {item.name}
+                                            <span
+                                                className={`absolute left-1/2 -translate-x-1/2 -bottom-[9px] h-[2px] rounded-full bg-[#ff6b57] transition-all duration-300 ${
+                                                    isActive ? "w-5" : "w-0"
+                                                }`}
+                                            />
+                                        </Link>
+                                    );
+                                })}
                             </nav>
 
                             <div className="hidden md:flex items-center gap-6">
-                                <button className="cursor-pointer text-sm font-medium text-[#1f2937]">
+                                <Link
+                                    href="/sign-in"
+                                    className="cursor-pointer text-sm font-medium text-[#1f2937] hover:text-[#85A32B] transition"
+                                >
                                     Sign In
-                                </button>
+                                </Link>
 
-                                <button className="cursor-pointer hover:bg-[#f3f3f3] flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-sm font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)]">
-                                    <CreateAccountIcons className="w-6 h-6 text-[#17c58b]" />
+                                <Link
+                                    href="/sign-up"
+                                    className="cursor-pointer hover:bg-[#f4f9ef] flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-sm font-medium text-black border border-[#e5e7eb] shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition"
+                                >
+                                    <CreateAccountIcons className="w-5 h-5 text-[#17c58b]" />
                                     <span>Create Account</span>
-                                </button>
+                                </Link>
                             </div>
 
                             <button className="rounded-lg bg-[#17c58b] px-3 py-2 text-lg leading-none text-white md:hidden">
@@ -470,6 +504,7 @@ export default function JobPage() {
                         </div>
                     </div>
                 </section>
+
                 <section className="w-full bg-white pt-16 pb-50 md:pb-50">
                     <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
 
@@ -483,12 +518,12 @@ export default function JobPage() {
                                 const isOpen = openFAQ === index;
 
                                 return (
-                                   <div
-  key={index}
-  onClick={() => setOpenFAQ(isOpen ? null : index)}
-  className="border border-gray-200 hover:bg-[#f3f3f3] rounded-xl overflow-hidden bg-[#f9f9f9] cursor-pointer transition"
->
-                                       <div className="w-full flex items-center justify-between px-5 py-4 text-left">
+                                    <div
+                                        key={index}
+                                        onClick={() => setOpenFAQ(isOpen ? null : index)}
+                                        className="border border-gray-200 hover:bg-[#f3f3f3] rounded-xl overflow-hidden bg-[#f9f9f9] cursor-pointer transition"
+                                    >
+                                        <div className="w-full flex items-center justify-between px-5 py-4 text-left">
                                             <span className="text-sm md:text-base font-medium text-black">
                                                 {faq.question}
                                             </span>
@@ -510,10 +545,9 @@ export default function JobPage() {
                         </div>
                     </div>
                 </section>
-  
 
-            <FooterSection />
-                      </div>
+                <FooterSection />
+            </div>
         </main>
     );
 }

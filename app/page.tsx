@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Poppins } from "next/font/google";
 import Icon1 from "./components/icons/Icon1";
 import Logo from "./components/icons/Logo";
@@ -24,8 +25,16 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
+  const pathname = usePathname();
 
   const locations = ["Beirut", "Dubai", "London", "Remote"];
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Job", href: "/job" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
 
   return (
     <main className={`${poppins.className} bg-white overflow-x-hidden`}>
@@ -41,10 +50,26 @@ export default function Home() {
                   </Link>
 
                   <nav className="hidden items-center gap-[46px] text-[14px] font-medium text-[#1f2937] md:flex">
-                    <a href="/" className="transition hover:text-black hover:underline">Home</a>
-                    <a href="/job" className="transition hover:text-black hover:underline">Job</a>
-                    <a href="#" className="transition hover:text-black hover:underline">About Us</a>
-                    <a href="#" className="transition hover:text-black hover:underline">Contact</a>
+                    {navLinks.map((item) => {
+                      const isActive = pathname === item.href;
+
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`relative transition ${
+                            isActive ? "text-black" : "text-[#1f2937] hover:text-black"
+                          }`}
+                        >
+                          {item.name}
+                          <span
+                            className={`absolute left-1/2 -translate-x-1/2 -bottom-[9px] h-[2px] rounded-full bg-[#ff6b57] transition-all duration-300 ${
+                              isActive ? "w-5" : "w-0"
+                            }`}
+                          />
+                        </Link>
+                      );
+                    })}
                   </nav>
 
                   <button
@@ -151,14 +176,20 @@ export default function Home() {
             <div className="absolute top-0 left-0 w-full h-full bg-[#17c58b] md:w-screen md:max-w-none rounded-none md:rounded-bl-[72px]"></div>
 
             <div className="hidden md:flex absolute right-10 top-7 z-20 items-center gap-6">
-              <button className="cursor-pointer text-[14px] font-medium text-white">
+              <Link
+                href="/sign-in"
+                className="cursor-pointer text-[14px] font-medium text-white hover:text-[#f4f9ef] transition"
+              >
                 Sign In
-              </button>
+              </Link>
 
-              <button className="cursor-pointer hover:bg-[#f3f3f3] flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black shadow-[0_6px_16px_rgba(0,0,0,0.10)]">
-                <CreateAccountIcons className="w-6 h-6 text-[#17c58b]" />
+              <Link
+                href="/sign-up"
+                className="cursor-pointer hover:bg-[#f4f9ef] flex items-center gap-2 rounded-[18px] bg-white px-6 py-[14px] text-[14px] font-medium text-black border border-[#e5e7eb] shadow-[0_8px_20px_rgba(0,0,0,0.08)] transition"
+              >
+                <CreateAccountIcons className="w-5 h-5 text-[#17c58b]" />
                 <span>Create Account</span>
-              </button>
+              </Link>
             </div>
 
             <div className="relative min-h-[560px]">
@@ -184,19 +215,44 @@ export default function Home() {
               >
                 <button onClick={() => setOpen(false)} className="self-end text-xl">✕</button>
 
-                <a href="#" className="text-[15px] font-medium text-[#374151]">Home</a>
-                <a href="#" className="text-[15px] font-medium text-[#374151]">Job</a>
-                <a href="#" className="text-[15px] font-medium text-[#374151]">About Us</a>
-                <a href="#" className="text-[15px] font-medium text-[#374151]">Contact</a>
+                {navLinks.map((item) => {
+                  const isActive = pathname === item.href;
 
-                <button className="mt-3 text-left text-[15px] font-medium text-[#374151]">
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`relative w-fit text-[15px] font-medium transition ${
+                        isActive ? "text-black" : "text-[#374151] hover:text-black"
+                      }`}
+                    >
+                      {item.name}
+                      <span
+                        className={`absolute left-0 -bottom-[6px] h-[2px] rounded-full bg-[#ff6b57] transition-all duration-300 ${
+                          isActive ? "w-5" : "w-0"
+                        }`}
+                      />
+                    </Link>
+                  );
+                })}
+
+                <Link
+                  href="/sign-in"
+                  onClick={() => setOpen(false)}
+                  className="mt-3 text-left text-[15px] font-medium text-[#374151] hover:text-[#85A32B] transition"
+                >
                   Sign In
-                </button>
+                </Link>
 
-                <button className="flex items-center gap-2 bg-[#17c58b] text-white px-4 py-2 rounded-lg">
-                  <CreateAccountIcons className="w-6 h-6" />
+                <Link
+                  href="/sign-up"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-[14px] bg-white px-4 py-3 text-[15px] font-medium text-black border border-[#e5e7eb] shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:bg-[#f8fcf8] transition"
+                >
+                  <CreateAccountIcons className="w-5 h-5 text-[#17c58b]" />
                   <span>Create Account</span>
-                </button>
+                </Link>
               </div>
             </div>
           )}
