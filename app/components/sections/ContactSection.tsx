@@ -2,32 +2,39 @@
 
 import { Mail, MapPin, Phone, Send, Clock } from "lucide-react";
 
+const googleLocation =
+  "https://www.google.com/maps/search/?api=1&query=Beirut%2C%20Lebanon";
+
 const contactCards = [
   {
     icon: Mail,
     title: "Email",
     text: "support@jobnqw.com",
+    href: "mailto:support@jobnqw.com",
   },
   {
     icon: Phone,
     title: "Phone",
     text: "+961 70 000 000",
+    href: "tel:+96170000000",
   },
   {
     icon: MapPin,
     title: "Location",
     text: "Beirut, Lebanon",
+    href: googleLocation,
   },
   {
     icon: Clock,
     title: "Working Hours",
     text: "Mon - Fri, 9:00 AM - 5:00 PM",
+    href: null,
   },
 ];
 
 export default function ContactSection() {
   return (
-    <section className="w-full bg-white pt-16 pb-50 md:pt-24 md:pb-50">
+    <section className="w-full bg-white pt-16 pb-24 md:pt-24 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
@@ -47,11 +54,8 @@ export default function ContactSection() {
               {contactCards.map((item) => {
                 const Icon = item.icon;
 
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
-                  >
+                const cardContent = (
+                  <>
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#17c58b]/10">
                       <Icon className="h-5 w-5 text-[#17c58b]" />
                     </div>
@@ -63,6 +67,29 @@ export default function ContactSection() {
                     <p className="mt-2 text-sm leading-6 text-[#6b7280]">
                       {item.text}
                     </p>
+                  </>
+                );
+
+                if (item.href) {
+                  return (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      target={item.title === "Location" ? "_blank" : undefined}
+                      rel={item.title === "Location" ? "noopener noreferrer" : undefined}
+                      className="rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
+                    >
+                      {cardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
+                  >
+                    {cardContent}
                   </div>
                 );
               })}
@@ -147,7 +174,12 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <div className="mt-12 overflow-hidden rounded-3xl border border-[#e5e7eb] bg-[#f2f2f2] p-6 md:p-8">
+        <a
+          href={googleLocation}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-12 block overflow-hidden rounded-3xl border border-[#e5e7eb] bg-[#f2f2f2] p-6 transition hover:bg-[#edf8f4] md:p-8"
+        >
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               <h3 className="text-3xl font-bold text-black">
@@ -169,13 +201,13 @@ export default function ContactSection() {
                   Beirut, Lebanon
                 </h4>
 
-                <p className="mt-2 text-sm text-[#6b7280]">
-                  Interactive map can be added here later
+                <p className="mt-2 text-sm font-medium text-[#17c58b]">
+                  Open location in Google Maps
                 </p>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );

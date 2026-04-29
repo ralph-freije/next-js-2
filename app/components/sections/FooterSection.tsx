@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 export default function FooterSection() {
     return (
-      <section className="w-full bg-[#17c58b] pt-32 pb-20 relative">
+        <section className="w-full bg-[#17c58b] pt-32 pb-20 relative">
 
             <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 relative">
                 <div className="bg-[#0b3f35] rounded-xl px-12 md:px-24 py-14 text-center -mt-65">
@@ -26,7 +26,7 @@ export default function FooterSection() {
             </div>
             <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 text-white mt-16">
 
-              <div className="grid grid-cols-2 md:grid-cols-[2fr_1.5fr_0.5fr_0fr] gap-x-30 gap-y-20">
+                <div className="grid grid-cols-2 md:grid-cols-[2fr_1.5fr_0.5fr_0fr] gap-x-30 gap-y-20">
 
                     <div className="col-span-2 md:col-span-1">
                         <h2 className="text-4xl font-bold text-black  md:mt-5">
@@ -52,13 +52,13 @@ export default function FooterSection() {
                         <h3 className="text-xl font-semibold mb-4">Pages</h3>
                         <ul className="text-sm text-white/80 space-y-2">
                             <li>
-                                <a href="#" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
+                                <a href="/" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
                                     <span>›</span> Home
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
-                                    <span>›</span> Booking
+                                <a href="/job" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
+                                    <span>›</span> jobs
                                 </a>
                             </li>
                             <li>
@@ -67,17 +67,22 @@ export default function FooterSection() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
+                                <a href="/about" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
                                     <span>›</span> About Us
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
-                                    <span>›</span> Location
+                                <a
+                                    href="https://www.google.com/maps/search/?api=1&query=Beirut%2C%20Lebanon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm text-white/80 transition hover:text-white"
+                                >
+                                    › Location
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
+                                <a href="/contact" className="flex gap-2 items-center cursor-pointer hover:underline hover:text-white transition">
                                     <span>›</span> Contact
                                 </a>
                             </li>
