@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Masonry from "react-masonry-css";
 
 const galleryImages = [
@@ -62,6 +63,11 @@ const breakpointColumns = {
 };
 
 export default function GallerySection() {
+  const [selectedImage, setSelectedImage] = useState<null | {
+    src: string;
+    alt: string;
+  }>(null);
+
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-12">
@@ -85,19 +91,47 @@ export default function GallerySection() {
           columnClassName="flex flex-col gap-5"
         >
           {galleryImages.map((image, index) => (
-            <div
+            <button
               key={index}
-              className="overflow-hidden rounded-3xl bg-[#f8f8f8] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+              type="button"
+              onClick={() => setSelectedImage(image)}
+              className="group cursor-pointer overflow-hidden rounded-3xl bg-[#f8f8f8] text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <img
                 src={image.src}
                 alt={image.alt}
-                className="h-auto w-full object-cover transition duration-500 hover:scale-105"
+                className="h-auto w-full object-cover transition duration-500 group-hover:scale-105"
               />
-            </div>
+            </button>
           ))}
         </Masonry>
       </div>
+
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 px-5 py-8"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedImage(null)}
+            className="absolute right-5 top-5 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white text-2xl font-medium text-black shadow-lg transition hover:bg-[#17c58b] hover:text-white"
+          >
+            ×
+          </button>
+
+          <div
+            className="max-h-[90vh] max-w-6xl overflow-hidden rounded-3xl p-3 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-h-[85vh] w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
