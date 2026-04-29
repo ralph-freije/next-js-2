@@ -27,8 +27,8 @@ export default function ContactPage() {
 
   return (
     <main className={`${poppins.className} min-h-screen bg-white overflow-x-hidden`}>
-      <section className="w-full bg-[#f2f2f2]">
-        <div className="mx-auto max-w-7xl px-6 pt-7 pb-16 md:px-10 md:pt-9 lg:px-12">
+      <section className="w-full bg-[#f2f2f2] ">
+        <div className="mx-auto max-w-7xl px-6 pt-7 pb-16 md:px-10 md:pt-9 lg:px-12 ">
           <div className="flex items-center justify-between">
             <Link href="/" className="shrink-0">
               <Logo />

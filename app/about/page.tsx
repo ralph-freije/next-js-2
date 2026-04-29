@@ -10,7 +10,7 @@ import AboutTimelineSection from "../components/sections/AboutTimelineSection";
 import AboutMediaHighlightsSection from "../components/sections/AboutMediaHighlightsSection";
 import AboutVideoSection from "../components/sections/AboutVideoSection";
 import FooterSection from "../components/sections/FooterSection";
-
+import GallerySection from "../components/sections/GallerySection";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -154,7 +154,9 @@ export default function AboutPage() {
 
       <AboutTimelineSection />
       <AboutMediaHighlightsSection />
+      <GallerySection />
       <AboutVideoSection />
+  
       <FooterSection />
     </main>
   );

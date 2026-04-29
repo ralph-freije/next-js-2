@@ -34,7 +34,7 @@ const contactCards = [
 
 export default function ContactSection() {
   return (
-    <section className="w-full bg-white pt-16 pb-24 md:pt-24 md:pb-32">
+    <section className="w-full bg-white pt-16 pb-50 md:pt-24 md:pb-50">
       <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
