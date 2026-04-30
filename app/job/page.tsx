@@ -1,13 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Poppins } from "next/font/google";
 import { MapPin, Clock, ChevronDown, ChevronUp, Search } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Logo from "../components/icons/Logo";
 import CreateAccountIcons from "../components/icons/CreateAccountIcons";
 import FooterSection from "../components/sections/FooterSection";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -219,6 +223,7 @@ export default function JobPage() {
     const [openJobId, setOpenJobId] = useState<number | null>(null);
     const [openFAQ, setOpenFAQ] = useState<number | null>(null);
     const pathname = usePathname();
+    const pageRef = useRef<HTMLElement | null>(null);
 
     const locations = ["All", "Beirut", "Dubai", "London", "Remote"];
     const types = ["All", "Full Time", "Part Time", "Remote", "Internship"];
@@ -246,17 +251,184 @@ export default function JobPage() {
         });
     }, [search, location, type, category]);
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(".job-logo", {
+                y: -20,
+                opacity: 0,
+                duration: 0.6,
+                ease: "power3.out",
+            });
+
+            gsap.from(".job-nav", {
+                y: -18,
+                opacity: 0,
+                duration: 0.65,
+                delay: 0.08,
+                ease: "power3.out",
+            });
+
+            gsap.from(".job-auth-actions", {
+                y: -18,
+                opacity: 0,
+                duration: 0.65,
+                delay: 0.15,
+                ease: "power3.out",
+            });
+
+            gsap.from(".job-hero-title", {
+                y: 42,
+                opacity: 0,
+                duration: 0.9,
+                delay: 0.2,
+                ease: "power3.out",
+            });
+
+            gsap.from(".job-hero-text", {
+                y: 28,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.35,
+                ease: "power3.out",
+            });
+
+            gsap.from(".job-filter-box", {
+                y: 36,
+                opacity: 0,
+                scale: 0.97,
+                duration: 0.85,
+                delay: 0.5,
+                ease: "power3.out",
+            });
+
+            gsap.from(".job-filter-item", {
+                y: 18,
+                opacity: 0,
+                duration: 0.55,
+                stagger: 0.08,
+                delay: 0.72,
+                ease: "power3.out",
+            });
+
+            gsap.from(".jobs-heading", {
+                y: 32,
+                opacity: 0,
+                duration: 0.75,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".jobs-heading",
+                    start: "top 85%",
+                },
+            });
+
+            gsap.from(".job-card", {
+                y: 46,
+                opacity: 0,
+                scale: 0.98,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".job-list",
+                    start: "top 85%",
+                },
+            });
+
+         gsap.fromTo(
+    ".faq-heading",
+    {
+        y: 32,
+        opacity: 0,
+    },
+    {
+        y: 0,
+        opacity: 1,
+        duration: 0.75,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".faq-heading",
+            start: "top 90%",
+        },
+    }
+);
+
+gsap.fromTo(
+    ".faq-card",
+    {
+        y: 28,
+        opacity: 0,
+    },
+    {
+        y: 0,
+        opacity: 1,
+        duration: 0.55,
+        stagger: 0.07,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".faq-heading",
+            start: "top 85%",
+        },
+        onComplete: () => {
+            gsap.set(".faq-card", { clearProps: "all" });
+        },
+    }
+);
+        }, pageRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    useEffect(() => {
+        if (!openJobId) return;
+
+        gsap.fromTo(
+            ".job-details-panel",
+            {
+                height: 0,
+                opacity: 0,
+                y: -12,
+            },
+            {
+                height: "auto",
+                opacity: 1,
+                y: 0,
+                duration: 0.35,
+                ease: "power2.out",
+            }
+        );
+    }, [openJobId]);
+
+    useEffect(() => {
+        if (openFAQ === null) return;
+
+        gsap.fromTo(
+            ".faq-answer",
+            {
+                height: 0,
+                opacity: 0,
+                y: -8,
+            },
+            {
+                height: "auto",
+                opacity: 1,
+                y: 0,
+                duration: 0.3,
+                ease: "power2.out",
+            }
+        );
+    }, [openFAQ]);
+
     return (
-        <main className="min-h-screen flex flex-col bg-[#17c58b]">
+        <main ref={pageRef} className="min-h-screen flex flex-col bg-[#17c58b]">
             <div className="flex-1 flex flex-col">
                 <section className="w-full bg-[#f3f3f3] ">
                     <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pt-12 md:pt-16 pb-20">
                         <div className="flex items-center justify-between">
-                            <Link href="/" className="shrink-0">
+                            <Link href="/" className="job-logo shrink-0">
                                 <Logo />
                             </Link>
 
-                            <nav className="hidden md:flex items-center gap-10 text-sm font-medium text-[#1f2937]">
+                            <nav className="job-nav hidden md:flex items-center gap-10 text-sm font-medium text-[#1f2937]">
                                 {navLinks.map((item) => {
                                     const isActive = pathname === item.href;
 
@@ -279,7 +451,7 @@ export default function JobPage() {
                                 })}
                             </nav>
 
-                            <div className="hidden md:flex items-center gap-6">
+                            <div className="job-auth-actions hidden md:flex items-center gap-6">
                                 <Link
                                     href="/sign-in"
                                     className="cursor-pointer text-sm font-medium text-[#1f2937] hover:text-[#85A32B] transition"
@@ -302,19 +474,19 @@ export default function JobPage() {
                         </div>
 
                         <div className="pt-14 md:pt-20 text-center">
-                            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-black">
+                            <h1 className="job-hero-title text-4xl md:text-5xl font-bold leading-tight text-black">
                                 Find Your Dream Job
                             </h1>
 
-                            <p className="mt-5 text-sm md:text-base leading-8 max-w-2xl mx-auto text-[#6b7280]">
+                            <p className="job-hero-text mt-5 text-sm md:text-base leading-8 max-w-2xl mx-auto text-[#6b7280]">
                                 Explore opportunities that match your skills. Search, filter, and open each job to view detailed responsibilities, requirements, and benefits.
                             </p>
                         </div>
 
-                        <div className="mt-10 bg-white rounded-[18px] p-4 md:p-5 shadow-sm">
+                        <div className="job-filter-box mt-10 bg-white rounded-[18px] p-4 md:p-5 shadow-sm">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
 
-                                <div>
+                                <div className="job-filter-item">
                                     <label className="text-xs text-gray-500 mb-1 block">Search</label>
                                     <div className="flex items-center gap-2 bg-[#f3f3f3] px-4 h-12 rounded-xl">
                                         <Search className="w-4 h-4 text-[#6b7280]" />
@@ -328,7 +500,7 @@ export default function JobPage() {
                                     </div>
                                 </div>
 
-                                <div>
+                                <div className="job-filter-item">
                                     <label className="text-xs text-gray-500 mb-1 block">Location</label>
                                     <select
                                         value={location}
@@ -341,7 +513,7 @@ export default function JobPage() {
                                     </select>
                                 </div>
 
-                                <div>
+                                <div className="job-filter-item">
                                     <label className="text-xs text-gray-500 mb-1 block">Job Type</label>
                                     <select
                                         value={type}
@@ -354,7 +526,7 @@ export default function JobPage() {
                                     </select>
                                 </div>
 
-                                <div>
+                                <div className="job-filter-item">
                                     <label className="text-xs text-gray-500 mb-1 block">Category</label>
                                     <select
                                         value={category}
@@ -374,7 +546,7 @@ export default function JobPage() {
 
                 <section className="w-full bg-white py-16 md:py-10 pb-10 md:pb-10">
                     <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-                        <div className="flex items-center justify-between gap-4 flex-wrap">
+                        <div className="jobs-heading flex items-center justify-between gap-4 flex-wrap">
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-semibold text-black">
                                     Available Jobs
@@ -385,14 +557,14 @@ export default function JobPage() {
                             </div>
                         </div>
 
-                        <div className="mt-10 space-y-5">
+                        <div className="job-list mt-10 space-y-5">
                             {filteredJobs.map((job) => {
                                 const isOpen = openJobId === job.id;
 
                                 return (
                                     <div
                                         key={job.id}
-                                        className="bg-[#f9f9f9] rounded-2xl border border-[#eeeeee] overflow-hidden"
+                                        className="job-card bg-[#f9f9f9] rounded-2xl border border-[#eeeeee] overflow-hidden"
                                     >
                                         <div className="p-5 md:p-6">
                                             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
@@ -461,7 +633,7 @@ export default function JobPage() {
                                         </div>
 
                                         {isOpen && (
-                                            <div className="border-t border-[#ececec] bg-white px-5 md:px-6 py-6">
+                                            <div className="job-details-panel overflow-hidden border-t border-[#ececec] bg-white px-5 md:px-6 py-6">
                                                 <div className="grid md:grid-cols-3 gap-6">
                                                     <div>
                                                         <h4 className="text-base font-semibold text-black">
@@ -508,11 +680,11 @@ export default function JobPage() {
                 <section className="w-full bg-white pt-16 pb-50 md:pb-50">
                     <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
 
-                        <h2 className="text-2xl md:text-3xl font-semibold text-black text-center">
+                        <h2 className="faq-heading text-2xl md:text-3xl font-semibold text-black text-center">
                             Frequently Asked Questions
                         </h2>
 
-                        <div className="mt-10 space-y-4">
+                        <div className="faq-list mt-10 space-y-4">
 
                             {faqs.map((faq, index) => {
                                 const isOpen = openFAQ === index;
@@ -521,7 +693,7 @@ export default function JobPage() {
                                     <div
                                         key={index}
                                         onClick={() => setOpenFAQ(isOpen ? null : index)}
-                                        className="border border-gray-200 hover:bg-[#f3f3f3] rounded-xl overflow-hidden bg-[#f9f9f9] cursor-pointer transition"
+                                        className="faq-card border border-gray-200 hover:bg-[#f3f3f3] rounded-xl overflow-hidden bg-[#f9f9f9] cursor-pointer transition"
                                     >
                                         <div className="w-full flex items-center justify-between px-5 py-4 text-left">
                                             <span className="text-sm md:text-base font-medium text-black">
@@ -534,7 +706,7 @@ export default function JobPage() {
                                         </div>
 
                                         {isOpen && (
-                                            <div className="px-5 pb-4 text-sm text-gray-600">
+                                            <div className="faq-answer overflow-hidden px-5 pb-4 text-sm text-gray-600">
                                                 {faq.answer}
                                             </div>
                                         )}

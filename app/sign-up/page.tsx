@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
+import gsap from "gsap";
 import Logo from "../components/icons/Logo";
-import CreateAccountIcons from "../components/icons/CreateAccountIcons";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,30 +12,124 @@ const poppins = Poppins({
 });
 
 export default function SignUpPage() {
+  const pageRef = useRef<HTMLElement | null>(null);
   const [genderOpen, setGenderOpen] = useState(false);
   const [gender, setGender] = useState("Male");
 
   const genders = ["Male", "Female"];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".signup-logo",
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      );
+
+      gsap.fromTo(
+        ".signup-back",
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, delay: 0.08, ease: "power3.out" }
+      );
+
+      gsap.fromTo(
+        ".signup-card",
+        { y: 45, opacity: 0, scale: 0.96 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.85,
+          delay: 0.18,
+          ease: "power3.out",
+        }
+      );
+
+      gsap.fromTo(
+        ".signup-title",
+        { y: 28, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          delay: 0.35,
+          ease: "power3.out",
+        }
+      );
+
+      gsap.fromTo(
+        ".signup-animate",
+        { y: 24, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          stagger: 0.07,
+          delay: 0.48,
+          ease: "power3.out",
+          onComplete: () => {
+            gsap.set(".signup-animate", { clearProps: "all" });
+          },
+        }
+      );
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    if (!genderOpen) return;
+
+    gsap.fromTo(
+      ".gender-dropdown",
+      {
+        y: -8,
+        opacity: 0,
+        scale: 0.96,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.22,
+        ease: "power2.out",
+      }
+    );
+
+    gsap.fromTo(
+      ".gender-option",
+      {
+        x: -8,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.22,
+        stagger: 0.05,
+        ease: "power2.out",
+      }
+    );
+  }, [genderOpen]);
+
   return (
-    <main className={`${poppins.className} min-h-screen bg-[#f2f2f2] px-6 py-8`}>
+    <main ref={pageRef} className={`${poppins.className} min-h-screen bg-[#f2f2f2] px-6 py-8`}>
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
-        <Link href="/">
+        <Link href="/" className="signup-logo">
           <Logo />
         </Link>
 
         <Link
           href="/"
-          className="cursor-pointer rounded-full border border-[#e5e7eb] bg-white px-5 py-2.5 text-sm font-semibold text-[#1f2937] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition hover:bg-[#17c58b] hover:text-white"
+          className="signup-back cursor-pointer rounded-full border border-[#e5e7eb] bg-white px-5 py-2.5 text-sm font-semibold text-[#1f2937] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition hover:bg-[#17c58b] hover:text-white"
         >
           Back Home
         </Link>
       </div>
 
       <section className="flex min-h-[calc(100vh-96px)] items-center justify-center py-10">
-        <div className="w-full max-w-[680px] rounded-[30px] border border-[#e5e7eb] bg-white p-6 shadow-[0_25px_70px_rgba(0,0,0,0.08)] sm:p-8 md:p-10">
-          <div className="text-center">
-
+        <div className="signup-card w-full max-w-[680px] rounded-[30px] border border-[#e5e7eb] bg-white p-6 shadow-[0_25px_70px_rgba(0,0,0,0.08)] sm:p-8 md:p-10">
+          <div className="signup-title text-center">
             <h2 className="text-[30px] font-bold text-black sm:text-[36px]">
               Create Account
             </h2>
@@ -46,7 +140,7 @@ export default function SignUpPage() {
           </div>
 
           <form className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-            <div>
+            <div className="signup-animate">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 First Name
               </label>
@@ -57,7 +151,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            <div>
+            <div className="signup-animate">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 Last Name
               </label>
@@ -68,7 +162,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            <div className="relative">
+            <div className="signup-animate relative">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 Gender
               </label>
@@ -89,7 +183,7 @@ export default function SignUpPage() {
               </button>
 
               {genderOpen && (
-                <div className="absolute left-0 right-0 top-[76px] z-50 rounded-[14px] border border-[#e5e7eb] bg-white p-2 shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
+                <div className="gender-dropdown absolute left-0 right-0 top-[76px] z-50 rounded-[14px] border border-[#e5e7eb] bg-white p-2 shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
                   {genders.map((item) => (
                     <button
                       key={item}
@@ -98,7 +192,7 @@ export default function SignUpPage() {
                         setGender(item);
                         setGenderOpen(false);
                       }}
-                      className={`w-full cursor-pointer rounded-[10px] px-4 py-3 text-left text-sm font-medium transition ${
+                      className={`gender-option w-full cursor-pointer rounded-[10px] px-4 py-3 text-left text-sm font-medium transition ${
                         gender === item
                           ? "bg-[#17c58b] text-white"
                           : "text-[#374151] hover:bg-[#f3f3f3]"
@@ -111,7 +205,7 @@ export default function SignUpPage() {
               )}
             </div>
 
-            <div>
+            <div className="signup-animate">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 Birthday
               </label>
@@ -121,7 +215,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            <div>
+            <div className="signup-animate">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 Phone
               </label>
@@ -132,7 +226,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            <div>
+            <div className="signup-animate">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 Email
               </label>
@@ -143,7 +237,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="signup-animate md:col-span-2">
               <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#374151]">
                 Password
               </label>
@@ -156,13 +250,13 @@ export default function SignUpPage() {
 
             <button
               type="submit"
-              className="md:col-span-2 h-12 w-full cursor-pointer rounded-[14px] bg-[#17c58b] text-sm font-semibold text-white shadow-[0_12px_26px_rgba(23,197,139,0.28)] transition hover:bg-[#13b77f]"
+              className="signup-animate md:col-span-2 h-12 w-full cursor-pointer rounded-[14px] bg-[#17c58b] text-sm font-semibold text-white shadow-[0_12px_26px_rgba(23,197,139,0.28)] transition hover:bg-[#13b77f]"
             >
               Create Account
             </button>
           </form>
 
-          <div className="mt-7 text-center text-sm font-medium text-[#6b7280]">
+          <div className="signup-animate mt-7 text-center text-sm font-medium text-[#6b7280]">
             Already have an account?{" "}
             <Link href="/sign-in" className="text-[#17c58b] hover:text-black transition">
               Sign In

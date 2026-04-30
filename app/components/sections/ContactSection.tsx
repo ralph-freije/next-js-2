@@ -1,6 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { Mail, MapPin, Phone, Send, Clock } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const googleLocation =
   "https://www.google.com/maps/search/?api=1&query=Beirut%2C%20Lebanon";
@@ -33,24 +38,133 @@ const contactCards = [
 ];
 
 export default function ContactSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".contact-info-content",
+        {
+          y: 40,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-info-content",
+            start: "top 85%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".contact-card",
+        {
+          y: 35,
+          opacity: 0,
+          scale: 0.96,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.65,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-cards-grid",
+            start: "top 85%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".contact-form-box",
+        {
+          x: 50,
+          opacity: 0,
+          scale: 0.97,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-form-box",
+            start: "top 85%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".contact-form-field",
+        {
+          y: 22,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.07,
+          delay: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-form-box",
+            start: "top 82%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".contact-office-card",
+        {
+          y: 55,
+          opacity: 0,
+          scale: 0.97,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-office-card",
+            start: "top 88%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full bg-white pt-16 pb-50 md:pt-24 md:pb-50">
+    <section ref={sectionRef} className="w-full bg-white pt-16 pb-50 md:pt-24 md:pb-50">
       <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
-            <span className="inline-flex rounded-full bg-[#17c58b]/10 px-5 py-2 text-sm font-medium text-[#17c58b]">
-              Get in touch
-            </span>
+            <div className="contact-info-content">
+              <span className="inline-flex rounded-full bg-[#17c58b]/10 px-5 py-2 text-sm font-medium text-[#17c58b]">
+                Get in touch
+              </span>
 
-            <h2 className="mt-5 text-3xl font-bold leading-tight text-black md:text-5xl">
-              We are here to answer your questions
-            </h2>
+              <h2 className="mt-5 text-3xl font-bold leading-tight text-black md:text-5xl">
+                We are here to answer your questions
+              </h2>
 
-            <p className="mt-4 max-w-xl text-base leading-8 text-[#6b7280]">
-              Whether you are looking for support, partnership details, or more information about our job platform, our team is ready to help.
-            </p>
+              <p className="mt-4 max-w-xl text-base leading-8 text-[#6b7280]">
+                Whether you are looking for support, partnership details, or more information about our job platform, our team is ready to help.
+              </p>
+            </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="contact-cards-grid mt-8 grid gap-4 sm:grid-cols-2">
               {contactCards.map((item) => {
                 const Icon = item.icon;
 
@@ -77,7 +191,7 @@ export default function ContactSection() {
                       href={item.href}
                       target={item.title === "Location" ? "_blank" : undefined}
                       rel={item.title === "Location" ? "noopener noreferrer" : undefined}
-                      className="rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
+                      className="contact-card cursor-pointer rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
                     >
                       {cardContent}
                     </a>
@@ -87,7 +201,7 @@ export default function ContactSection() {
                 return (
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
+                    className="contact-card cursor-pointer rounded-2xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 transition hover:bg-white hover:shadow-lg"
                   >
                     {cardContent}
                   </div>
@@ -96,7 +210,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 shadow-lg md:p-8">
+          <div className="contact-form-box rounded-3xl border border-[#e5e7eb] bg-[#f8f8f8] p-5 shadow-lg md:p-8">
             <div className="rounded-3xl bg-white p-5 md:p-7">
               <h3 className="text-2xl font-bold text-black">
                 Send a message
@@ -107,7 +221,7 @@ export default function ContactSection() {
               </p>
 
               <form className="mt-7 grid grid-cols-1 gap-5 md:grid-cols-2">
-                <div>
+                <div className="contact-form-field">
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-[#374151]">
                     First Name
                   </label>
@@ -118,7 +232,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div>
+                <div className="contact-form-field">
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-[#374151]">
                     Last Name
                   </label>
@@ -129,7 +243,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div>
+                <div className="contact-form-field">
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-[#374151]">
                     Email
                   </label>
@@ -140,7 +254,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div>
+                <div className="contact-form-field">
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-[#374151]">
                     Subject
                   </label>
@@ -151,7 +265,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className="md:col-span-2">
+                <div className="contact-form-field md:col-span-2">
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-[#374151]">
                     Message
                   </label>
@@ -164,7 +278,7 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="md:col-span-2 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[#17c58b] text-sm font-semibold text-white shadow-lg transition hover:bg-[#13b77f]"
+                  className="contact-form-field md:col-span-2 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[#17c58b] text-sm font-semibold text-white shadow-lg transition hover:bg-[#13b77f]"
                 >
                   <span>Send Message</span>
                   <Send className="h-4 w-4" />
@@ -178,7 +292,7 @@ export default function ContactSection() {
           href={googleLocation}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-12 block overflow-hidden rounded-3xl border border-[#e5e7eb] bg-[#f2f2f2] p-6 transition hover:bg-[#edf8f4] md:p-8"
+          className="contact-office-card mt-12 block cursor-pointer overflow-hidden rounded-3xl border border-[#e5e7eb] bg-[#f2f2f2] p-6 transition hover:bg-[#edf8f4] md:p-8"
         >
           <div className="grid gap-6 md:grid-cols-2">
             <div>
